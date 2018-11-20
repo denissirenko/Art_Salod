@@ -44,7 +44,7 @@
                         </ul>
                     </div>
                     <div class="user__info_items user">
-                        <img src="img/user.png" alt="">
+                        <span class="icon-user"></span>
                     </div>
                     <div class="user__info_items cart">
                         <img src="img/cart.png" alt="">
@@ -64,7 +64,20 @@
         </main>
     </div>
     <footer class="footer"></footer>
+    <div class="modal">
+        <h2 class="modal__title">Регистрация</h2>
+        <form class="modal__form">
+            <input type="text" placeholder="Имя" class="input" required>
+            <input type="email" placeholder="Email" class="input" required>
+            <input type="tel" placeholder="Телефон" class="input" required>
+            <div class="message">Вы заполнили не все поля</div>
+            <input type="submit" value="Отправить" class="submit">
+            <img src="img/lowpoly_cat.png" alt="" class="modal__decor">          
+        </form>
+        <span class="icon-x"></span>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

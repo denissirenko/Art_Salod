@@ -14,6 +14,51 @@
     font-style: normal;
 }
 
+@font-face {
+font-family: 'icomoon';
+src:  url('../fonts/icomoon.eot?7b1xdm');
+src:  url('../fonts/icomoon.eot?7b1xdm#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?7b1xdm') format('truetype'),
+    url('../fonts/icomoon.woff?7b1xdm') format('woff'),
+    url('../fonts/icomoon.svg?7b1xdm#icomoon') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+/* use !important to prevent issues with browser extensions that change fonts */
+font-family: 'icomoon' !important;
+speak: none;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+
+/* Better Font Rendering =========== */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-x:hover {
+color: #2e343b;
+cursor: pointer;
+}
+
+.icon-x:before {
+content: "\e900";
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+transition: color 0.25s ease-in;
+}
+.icon-user:before {
+content: "\e971";
+line-height: 30px;
+font-size: 26px;
+}
+
 *,
 *:after,
 *:before {
@@ -24,6 +69,10 @@
 *:hover,
 *:active{
 	outline: none;
+}
+
+input {
+    border-style: none;
 }
 
 button,
@@ -68,8 +117,8 @@ a {
     position: relative;
     height: 900px;
     background: url(../img/main-bg.jpg) no-repeat center; 
-    @media screen and (max-width: 1024px) {
-        max-height: 100vh;
+    @media screen and (max-width: 1440px) {
+        height: 100vh;
     }
 }
 // header start 
@@ -103,6 +152,10 @@ a {
         }
         .contacts__link {
             margin-right: 35px;
+            transition: color .25s ease-in;
+            &:hover {
+                color: #c19a3b;
+            }
             @media screen and (max-width: 1024px) {
                 margin-left: 0;
                 margin-bottom: 10px;
@@ -138,8 +191,21 @@ a {
             @media screen and (max-width: 576px) {
                 margin-left: 7px;
             }
+            &.user {
+                color: #fff;
+                text-transform: uppercase;
+                height: 28px;
+                width: 28px;
+                border: 1px solid #fafafa;
+                border-radius: 50%;
+                overflow: hidden;
+            }
         }
     }
+}
+
+.user {
+    cursor: pointer;
 }
 // burger start 
 .menu {
@@ -166,6 +232,10 @@ a {
   left: 0;
   transform: rotate(0deg);
   transition: .2s ease-in-out;
+}
+
+.menu__icon:hover span {
+    background: #c19a3b;
 }
 
 .menu__icon span:nth-child(1) {
@@ -252,8 +322,8 @@ display: flex;
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
-  }
-  .language-select li {
+}
+.language-select li {
     margin: 5px -1px;
     text-align: center;
     flex: 1;
@@ -264,20 +334,29 @@ display: flex;
     padding: 10px 0;
     height: 28px;
     width: 28px;
-  }
-  .language-select li:hover {
+}
+.language-select li:hover {
     cursor: pointer;
-    background: #c19a3b;
-  }
+}
   
-  .language-select.open {
+.language-select.open {
     height: auto;
-  }
+}
   
-  .language-select li.active {
+.language-select li.active {
     order: 1;
     pointer-events: none;
-  }
+}
+.language-select,
+.language-select li,
+.user__info_items.user,
+.icon-user {
+    transition: all 0.25s ease-in;
+    &:hover {
+        color: #c19a3b;
+        border-color: #c19a3b !important;
+    }
+}
 // language-select end
 // header end
 
@@ -289,11 +368,8 @@ display: flex;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    @media screen and (max-width: 992px) {
-        left: 45%;
-    }
-    @media screen and (max-width: 576px) {
-        top: 42%;
+    @media screen and (max-width: 768px) {
+        top: 40%;
     }
     .main__title {
         position: relative;
@@ -319,7 +395,7 @@ display: flex;
             @media screen and (max-width: 1024px) {
                 top: 110px;
             }
-            @media screen and (max-width: 466px) {
+            @media screen and (max-width: 514px) {
                 top: 200px;
             }
         }
@@ -372,9 +448,6 @@ display: flex;
     @media screen and (max-width: 1024px) {
         bottom: 12%;
     }
-    @media screen and (max-width: 576px) {
-        bottom: 15%;
-    }
 }
 // main end
 // footer start 
@@ -387,3 +460,80 @@ display: flex;
     background-color: #f6f6f6;
 }
 // footer end 
+
+// popup start
+.modal { 
+    font-family: 'montserratlight', sans-serif;
+    text-align: center; 
+    width: 300px; 
+    background-color: #c19a3b;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    font-size: 14px; 
+    margin: 0 auto;
+    z-index:101; 
+    display: none;  
+    position: fixed; 
+    padding: 15px 10px 130px;
+    border: 1px solid #2e343b;
+    .modal__title {
+        font-size: 32px;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    .input {
+        padding: 5px 10px;
+        width: 90%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #2e343b;
+        border: 1px solid #fff;
+        &.err {
+            border: 1px solid red;
+        }
+    }
+    .submit {
+        margin-top: 20px;
+        padding: 7px 30px;
+        border-radius: 10px;
+        font-size: 16px;
+        color: #2e343b;
+        background-color: #fff;
+        cursor: pointer;
+        transition: all .25s ease-in;
+        &:hover {
+            background-color: #2e343b;
+            color: #c19a3b;
+        }
+    }
+    .message {
+        font-size: 16px;
+        color: #fff;
+        opacity: 0;
+        &.active {
+            opacity: 1;
+        }
+    }
+
+    .modal__decor {
+        width: 60%;
+        position: absolute;
+        right: 0;
+        bottom: -18px;
+    }
+}
+.shadow { 
+    position: fixed;
+    width:100%;
+    height:100%;
+    z-index:99;
+    background-color:#2e343b;
+    opacity: 0.8;
+    left:0;
+    top:0;
+}
+
+// popup end
